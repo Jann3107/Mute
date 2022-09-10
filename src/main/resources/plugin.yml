@@ -1,0 +1,19 @@
+name: Mute
+version: '${project.version}'
+main: de.jann3107.mute.Mute
+api-version: 1.19
+prefix: MUTE
+authors: [ Jann3107 ]
+description: A Mute Plugin for Minecraft 1.19.2, using MySQl for mute saving.
+website: https://jann3107.de
+
+commands:
+  mute:
+    permission: mute.mute
+    description: Mute a player
+  unmute:
+    permission: mute.unmute
+    description: Unmute a player
+  muteinfo:
+    permission: mute.muteinfo
+    description: Get mute info about a player
