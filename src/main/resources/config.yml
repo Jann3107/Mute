@@ -1,0 +1,36 @@
+mysql:
+  host: localhost
+  port: 3306
+  user: root
+  password: jann
+  database: mute
+# Soll der Spieler eine nachricht bekommen wenn er gemuted wird?
+notify: true
+# Blacklist, alle wörter bitte klein schreiben
+blacklist:
+# Die wörter die geblockt werden sollen, es werden keine strafen vergeben, die nachricht wird nur geblockt.
+  block:
+    - 'huso'
+    - 'hure'
+    - 'hurensohn'
+    - 'hurensohne'
+    - 'hurentochter'
+# Die wörter die gestraft werden sollen, es werden strafen vergeben, die nachricht wird geblockt.
+  punish:
+# Es gibt 10min 1h 1d 1w 1m 1y strafen
+    min:
+      - 'tiger'
+    h:
+      - 'hund'
+    d:
+      - 'katze'
+    w:
+      - 'maus'
+    m:
+      - 'elefant'
+    y:
+      - 'affe'
+# Sollten die strafen sich erhöhen? es wird immer die nächste strafe vergeben
+  increase: false
+# ab der wievielten strafe soll die strafe erhöht werden?
+  increaseafter: 3

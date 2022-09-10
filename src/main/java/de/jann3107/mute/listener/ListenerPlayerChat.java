@@ -16,13 +16,12 @@ public class ListenerPlayerChat implements Listener {
             e.setCancelled(true);
             return;
         }
-        String[] words = ((TextComponent) e.originalMessage()).content().split(" ");
-        for(String word : words) {
-            if(Mute.instance.blackListWordManager.isBlackListed(word)) {
-                e.getPlayer().sendMessage("§cDu darfst keine Beleidigungen schreiben!");
-                e.setCancelled(true);
-                return;
-            }
+        if(Mute.instance.blackListWordManager.isMessageBlackListed(((TextComponent) e.originalMessage()).content())) {
+            e.getPlayer().sendMessage("§cDu darfst keine Beleidigungen schreiben!");
+            Mute.instance.blackListWordManager.punish(e.getPlayer().getUniqueId().toString(), ((TextComponent) e.originalMessage()).content());
+            e.setCancelled(true);
+            return;
         }
+        e.getPlayer().sendMessage("§aDeine Nachricht wurde gesendet!");
     }
 }

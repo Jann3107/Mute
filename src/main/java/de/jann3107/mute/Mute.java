@@ -1,5 +1,8 @@
 package de.jann3107.mute;
 
+import de.jann3107.mute.commands.CommandMute;
+import de.jann3107.mute.commands.CommandMuteInfo;
+import de.jann3107.mute.commands.CommandUnmute;
 import de.jann3107.mute.listener.ListenerPlayerChat;
 import de.jann3107.mute.utils.BlackListWordManager;
 import de.jann3107.mute.utils.MuteManager;
@@ -18,15 +21,16 @@ public final class Mute extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         instance = this;
-        mysql = new MySQL(getConfig().getString("mysql.host"), getConfig().getString("mysql.database"), getConfig().getString("mysql.user"), getConfig().getString("mysql.password"), getConfig().getInt("mysql.port"));
+        saveDefaultConfig();
+        mysql = new MySQL(getConfig().getString("mysql.host", "localhost"), getConfig().getString("mysql.database", "mute"), getConfig().getString("mysql.user", "mutepl"), getConfig().getString("mysql.password", "password123"), getConfig().getInt("mysql.port", 3306));
         mysql.connect();
         mysql.init();
         muteManager = new MuteManager();
         blackListWordManager = new BlackListWordManager();
         Bukkit.getPluginManager().registerEvents(new ListenerPlayerChat(), this);
-        //getCommand("mute").setExecutor(new CommandMute());
-        //getCommand("unmute").setExecutor(new CommandUnmute());
-        //getCommand("muteinfo").setExecutor(new CommandMuteInfo());
+        getCommand("mute").setExecutor(new CommandMute());
+        getCommand("unmute").setExecutor(new CommandUnmute());
+        getCommand("muteinfo").setExecutor(new CommandMuteInfo());
     }
 
     @Override

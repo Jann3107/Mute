@@ -45,7 +45,7 @@ public class MySQL {
     public void init() {
         // Create a table named "mute" if not exists
         try {
-            connection.prepareStatement("CREATE TABLE IF NOT EXISTS `mute` (pluuid VARCHAR(32), mutetime TEXT(14))").execute();
+            connection.prepareStatement("CREATE TABLE IF NOT EXISTS `mute` (pluuid VARCHAR(32), mutetime TEXT(14), timesmuted INT(15))").execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
