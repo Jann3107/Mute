@@ -9,8 +9,6 @@ public class BlackListWordManager {
     public boolean isMessageBlackListed(String message) {
         message = message.toLowerCase();
         message = removeBypasses(message);
-        System.out.println("Checking: " + message);
-        System.out.println(getBlackListWords());
         for(String blword : getBlackListWords()) {
             if(message.contains(blword)) {
                 return true;
@@ -114,13 +112,11 @@ public class BlackListWordManager {
         if(!getBlockedWords().isEmpty()){
             words.addAll(getBlockedWords());
         }
-        System.out.println(get10MinsWords());
         if(!get10MinsWords().isEmpty()){
             words.addAll(get10MinsWords());
         }
         if(!get1HWords().isEmpty()){
             words.addAll(get1HWords());
-            System.out.println(get1HWords());
         }
         if(!get1DWords().isEmpty()){
             words.addAll(get1DWords());
@@ -131,10 +127,8 @@ public class BlackListWordManager {
         if(!get1MWords().isEmpty()){
             words.addAll(get1MWords());
         }
-        System.out.println(get1YWords());
         if(!get1YWords().isEmpty()){
             words.addAll(get1YWords());
-            System.out.println(get1YWords());
         }
         return words;
     }
@@ -166,6 +160,7 @@ public class BlackListWordManager {
     }
 
     private String removeBypasses(String message) {
+        message = message.replaceAll("ä", "a").replaceAll("ö", "o").replaceAll("ü", "u").replaceAll("ß", "ss");
         message = message.replaceAll("[^a-zA-Z]", "");
         message = message.toLowerCase();
         return message;

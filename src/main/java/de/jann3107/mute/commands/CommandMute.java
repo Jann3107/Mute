@@ -39,13 +39,12 @@ public class CommandMute implements CommandExecutor {
                         break;
                 }
                 if (target != null) {
-                    Mute.instance.muteManager.mutePlayer(target.getUniqueId().toString(), String.valueOf(System.currentTimeMillis() + (24 * 60 * 60 * 1000)));
                     sender.sendMessage("§aDer Spieler " + target.getName() + " wurde gemutet!");
                 } else {
                     sender.sendMessage("§cDer Spieler " + args[0] + " wurde nicht gefunden!");
                 }
             } else {
-                sender.sendMessage("§c/mute <Spieler>");
+                sender.sendMessage("§c/mute <Spieler> <Zeit>");
             }
         } else {
             sender.sendMessage("§cDazu hast du keine Rechte!");

@@ -6,7 +6,7 @@ mysql:
   database: mute
 # Soll der Spieler eine nachricht bekommen wenn er gemuted wird?
 notify: true
-# Blacklist, alle wörter bitte klein schreiben
+# Blacklist, alle wörter bitte klein schreiben, ä ö ü ß werden durch a o u ss ersetzt
 blacklist:
 # Die wörter die geblockt werden sollen, es werden keine strafen vergeben, die nachricht wird nur geblockt.
   block:

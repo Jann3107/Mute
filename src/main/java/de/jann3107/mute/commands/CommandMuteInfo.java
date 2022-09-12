@@ -16,7 +16,7 @@ public class CommandMuteInfo implements CommandExecutor {
         if(sender.hasPermission("mute.info")) {
             if(args.length == 0){
                 if(Mute.instance.muteManager.isMuted(((Player) sender).getUniqueId().toString())){
-                    Timestamp unmute = new Timestamp(Mute.instance.muteManager.getTimeMillisWhenUnmuted(((Player) sender).getUniqueId().toString()));
+                    String unmute = Mute.instance.muteManager.getTimestampWhenUnmuted(((Player) sender).getUniqueId().toString());
                     sender.sendMessage("§aDu bist bis " + unmute + " gemutet!");
                 } else {
                     sender.sendMessage("§aDu bist nicht gemutet!");
@@ -25,7 +25,7 @@ public class CommandMuteInfo implements CommandExecutor {
                 OfflinePlayer player = Mute.instance.getServer().getOfflinePlayer(args[0]);
                 if(player != null){
                     if(Mute.instance.muteManager.isMuted(player.getUniqueId().toString())){
-                        Timestamp unmute = new Timestamp(Mute.instance.muteManager.getTimeMillisWhenUnmuted(player.getUniqueId().toString()));
+                        String unmute = Mute.instance.muteManager.getTimestampWhenUnmuted(player.getUniqueId().toString());
                         sender.sendMessage("§aDer Spieler " + player.getName() + " ist bis " + unmute + " gemutet!");
                     } else {
                         sender.sendMessage("§aDer Spieler " + player.getName() + " ist nicht gemutet!");

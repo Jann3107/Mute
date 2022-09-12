@@ -17,11 +17,9 @@ public class ListenerPlayerChat implements Listener {
             return;
         }
         if(Mute.instance.blackListWordManager.isMessageBlackListed(((TextComponent) e.originalMessage()).content())) {
-            e.getPlayer().sendMessage("§cDu darfst keine Beleidigungen schreiben!");
+            e.getPlayer().sendMessage("§cDeine Nachricht entspricht nicht unserem Regelwerk!");
             Mute.instance.blackListWordManager.punish(e.getPlayer().getUniqueId().toString(), ((TextComponent) e.originalMessage()).content());
             e.setCancelled(true);
-            return;
         }
-        e.getPlayer().sendMessage("§aDeine Nachricht wurde gesendet!");
     }
 }
