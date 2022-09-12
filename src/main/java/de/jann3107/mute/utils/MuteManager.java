@@ -15,6 +15,7 @@ import java.util.UUID;
 public class MuteManager {
     public void mutePlayer(String uuid, String time) {
         incrementTimesMuted(uuid);
+        String realuuid = uuid;
         uuid = uuid.replaceAll("-", "");
         try {
             //is there a entry for this player?
@@ -26,7 +27,7 @@ public class MuteManager {
                 // Update entry
                 Mute.instance.mysql.getConnection().prepareStatement("UPDATE mute SET mutetime = '" + time + "' WHERE pluuid = '" + uuid + "'").execute();
             }
-            notifyPlayer(uuid, String.valueOf(getTimeMillisWhenUnmuted(uuid)));
+            notifyPlayer(realuuid, String.valueOf(getTimeMillisWhenUnmuted(realuuid)));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
