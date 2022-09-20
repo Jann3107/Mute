@@ -61,6 +61,7 @@ public class BlackListWordManager {
             for(String blword : get10MinsWords()) {
                 if(message.contains(blword)) {
                     punishPlayer(uuid, incrementLevel(uuid, 1));
+                    return;
                 }
             }
         }
@@ -68,6 +69,7 @@ public class BlackListWordManager {
             for(String blword : get1HWords()) {
                 if(message.contains(blword)) {
                     punishPlayer(uuid, incrementLevel(uuid, 2));
+                    return;
                 }
             }
         }
@@ -75,6 +77,7 @@ public class BlackListWordManager {
             for(String blword : get1DWords()) {
                 if(message.contains(blword)) {
                     punishPlayer(uuid, incrementLevel(uuid, 3));
+                    return;
                 }
             }
         }
@@ -82,6 +85,7 @@ public class BlackListWordManager {
             for(String blword : get1WWords()) {
                 if(message.contains(blword)) {
                     punishPlayer(uuid, incrementLevel(uuid, 4));
+                    return;
                 }
             }
         }
@@ -89,6 +93,7 @@ public class BlackListWordManager {
             for(String blword : get1MWords()) {
                 if(message.contains(blword)) {
                     punishPlayer(uuid, incrementLevel(uuid, 5));
+                    return;
                 }
             }
         }
@@ -96,6 +101,7 @@ public class BlackListWordManager {
             for(String blword : get1YWords()) {
                 if(message.contains(blword)) {
                     punishPlayer(uuid, incrementLevel(uuid, 6));
+                    return;
                 }
             }
         }

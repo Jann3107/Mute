@@ -27,14 +27,14 @@ public class MuteManager {
                 // Update entry
                 Mute.instance.mysql.getConnection().prepareStatement("UPDATE mute SET mutetime = '" + time + "' WHERE pluuid = '" + uuid + "'").execute();
             }
-            notifyPlayer(realuuid, String.valueOf(getTimeMillisWhenUnmuted(realuuid)));
+            notifyPlayer(realuuid, Long.valueOf(time));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    private void notifyPlayer(String uuid, String time) {
+    private void notifyPlayer(String uuid, Long time) {
         if(Mute.instance.getConfig().getBoolean("notify")){
-            Bukkit.getOfflinePlayer(UUID.fromString(uuid)).getPlayer().sendMessage("§cDu wurdest bis " + getTimestampWhenUnmuted(time) + " gemutet!");
+            Bukkit.getOfflinePlayer(UUID.fromString(uuid)).getPlayer().sendMessage("§cDu wurdest gemutet!");
         }
     }
     public void mutePlayerForHours(String uuid, int hours) {
@@ -52,7 +52,6 @@ public class MuteManager {
             rs.next();
             return Long.parseLong(rs.getString("mutetime"));
         } catch (SQLException e) {
-            e.printStackTrace();
             return 0;
         }
     }
